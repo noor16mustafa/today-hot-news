@@ -45,15 +45,25 @@ const loadNews = async (category_id) => {
         const res = await fetch(url);
         const data = await res.json();
         displayNews(data.data);
+
     }
     catch (error) {
         console.log(error);
     }
 }
 
+//************sort by views
+
+const sortByViews = (datas) => {
+    datas.sort((a, b) => {
+        return b.total_view - a.total_view;
+    })
+}
+
 //******************** */ display news*****************
 
 const displayNews = (newses) => {
+    sortByViews(newses);
 
     //display how many  news found
 
