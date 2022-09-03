@@ -165,6 +165,7 @@ const displayModalDetails = (modalData) => {
 }
 
 //toggle spinner 
+
 const toggleSpinner = isLoading => {
     const loaderSection = document.getElementById('loader');
     if (isLoading) {
