@@ -34,9 +34,15 @@ const displayCategorie = (categories) => {
 
 const loadNews = async (category_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayNews(data.data);
+
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayNews(data.data);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 //******************** */ display news*****************
@@ -54,7 +60,7 @@ const displayNews = (newses) => {
     newsfound.appendChild(messageDiv);
 
 
-    console.log(newses);
+
     const getDisplayNews = document.getElementById('display-news');
     getDisplayNews.textContent = '';
 
@@ -86,7 +92,8 @@ const displayNews = (newses) => {
                             <p class="card-text d-inline ms-2 fw-bold">${news.total_view === null ? 'No views' : news.total_view}</p>
                             </div>
                             <div class="col text-end mt-3">
-                            <a href="#" class="btn btn-success">See Details<i class="fa-solid fa-arrow-right p-2"></i></a>
+                            <a href="#" onclick="loadModalDetail('${news._id}')" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalForDisplayNews">See Details<i class="fa-solid fa-arrow-right p-2"></i></a>
+                           
                             </div>
                           </div>
                             </div>
@@ -97,5 +104,48 @@ const displayNews = (newses) => {
     });
 
 }
+
+//************load modal information with id********
+
+const loadModalDetail = async (news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayModalDetails(data.data[0]);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//**********display modal with news details*******
+
+const displayModalDetails = (modalData) => {
+
+    const getModalById = document.getElementById('modal-detail');
+    getModalById.textContent = '';
+    const modalDisplay = document.createElement('div');
+    modalDisplay.classList.add('modal-content');
+    modalDisplay.innerHTML = `
+    <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Author: ${modalData.author.name === '' || modalData.author.name === null ? 'Unknown publisher' : modalData.author.name}</h5>
+                            
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <p><span class="text-danger fw-bold">Published Date:</span> ${modalData.author.published_date}<p/>
+                        <p>News: ${modalData.details}</p>
+                        <img style="max-width:400px;" src="${modalData.image_url}">
+                        </div>
+                        <div class="modal-footer">
+                        <p>Ratings: <span class="text-primary fw-bold">${modalData.rating.number}</span> <p/>
+                        <p>Badge: <span class="text-danger fw-bold">${modalData.rating.badge}</span> <p/>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            
+                        </div>`;
+    getModalById.appendChild(modalDisplay);
+}
+
+
 
 loadCategories();
