@@ -16,12 +16,14 @@ const displayCategorie = (categories) => {
 
     const categoryList = document.getElementById('category-list');
 
+
     for (const category of categories) {
 
         const categoryName = document.createElement('a');
         categoryName.setAttribute("href", "#");
         categoryName.setAttribute('onclick', 'loadNews(\'' + `${category.category_id}` + '\');');
-        categoryName.classList.add("flex-sm-fill", "text-sm-center", "nav-link", "text-dark", "fs-5");
+        categoryName.classList.add("flex-sm-fill", "text-sm-center", "nav-link", "text-dark", "fs-5", 'style1');
+
         categoryName.innerText = `${category.category_name}`;
 
         categoryList.appendChild(categoryName);
