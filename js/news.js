@@ -10,12 +10,14 @@ const loadCategories = async () => {
     }
 }
 
+//display category section
+
 const displayCategorie = (categories) => {
-    //console.log(categories);
+
     const categoryList = document.getElementById('category-list');
 
     for (const category of categories) {
-        //console.log(category.category_name);
+
         const categoryName = document.createElement('a');
         categoryName.setAttribute("href", "#");
         categoryName.setAttribute('onclick', 'loadNews(\'' + `${category.category_id}` + '\');');
@@ -27,16 +29,37 @@ const displayCategorie = (categories) => {
 
 
 }
+
+//*********************load news by category******************
+
 const loadNews = async (category_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     const res = await fetch(url);
     const data = await res.json();
     displayNews(data.data);
 }
+
+//******************** */ display news*****************
+
 const displayNews = (newses) => {
+
+    //display how many  news found
+
+    const newsfound = document.getElementById('news-found');
+    newsfound.textContent = '';
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('bg-secondary', 'p-4');
+    messageDiv.innerHTML = `
+    <h5 class="text-center">${newses.length === 0 ? 'No News Available' : newses.length + ' items found'}  </h5>`;
+    newsfound.appendChild(messageDiv);
+
+
     console.log(newses);
     const getDisplayNews = document.getElementById('display-news');
     getDisplayNews.textContent = '';
+
+    //display all news by category
+
     newses.forEach(news => {
         const newsDiv = document.createElement('div');
         newsDiv.innerHTML = `
