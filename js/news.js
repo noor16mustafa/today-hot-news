@@ -35,6 +35,10 @@ const displayCategorie = (categories) => {
 //*********************load news by category******************
 
 const loadNews = async (category_id) => {
+
+    //start loader
+    toggleSpinner(true);
+
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
 
     try {
@@ -104,7 +108,8 @@ const displayNews = (newses) => {
                 </div>`;
         getDisplayNews.appendChild(newsDiv);
     });
-
+    //stop loader
+    toggleSpinner(false);
 }
 
 //************load modal information with id********
@@ -136,8 +141,9 @@ const displayModalDetails = (modalData) => {
                         </div>
                         <div class="modal-body">
                         <p><span class="text-danger fw-bold">Published Date:</span> ${modalData.author.published_date}<p/>
-                        <p>News: ${modalData.details}</p>
+                        
                         <img style="max-width:400px;" src="${modalData.image_url}">
+                        <p>News: ${modalData.details}</p>
                         </div>
                         <div class="modal-footer">
                         <p>Ratings: <span class="text-primary fw-bold">${modalData.rating.number}</span> <p/>
@@ -148,6 +154,14 @@ const displayModalDetails = (modalData) => {
     getModalById.appendChild(modalDisplay);
 }
 
-
+//toggle spinner 
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none')
+    } else {
+        loaderSection.classList.add('d-none');
+    }
+}
 
 loadCategories();
