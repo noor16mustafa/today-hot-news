@@ -9,7 +9,7 @@
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 
-<body class="container bg-success p-2 text-dark bg-opacity-25">
+<body class="container bg-secondary p-2 text-white">
     <!-------------------navbar section -->
 
     <header class="container mt-4">
@@ -34,6 +34,87 @@
             </div>
         </nav>
     </header>
+    <main>
+        <!-- question and ans section -->
+        <section>
+            <!-- first question -->
+            <div class="card text-bg-dark mb-3 mx-auto shadow-lg" style="max-width: 50rem;">
+                <div class="card-header text-center fs-4">Different between var, let and Const</div>
+                <div class="card-body">
+                    <h5 class="card-title">1. Var</h5>
+                    <p class="card-text"> Var variable can be declare multiple times.Once declared, it can also be
+                        reassigned a value.The var variables have a global scope, which means that they can be accessed
+                        anywhere from the script.One particular trait of the var variable is that once declared in the
+                        global scope (e.g. at the very beginning of the script) it becomes available as a property in
+                        the global window objec</p><br>
+                    <hr>
+                    <h5 class="card-title">2. let</h5>
+                    <p class="card-text">The let variables can only be declared once. If declared more than once, a
+                        Syntax Error will be thrown to the console.Same as var, let variable can also be reassigned a
+                        value.But when used in the global scope it won't be available in the global window object.let is
+                        block-scoped variable. This means that it's only accessible inside a single block, which is
+                        marked by a set of curly braces.let variables are also hoisted, but unlike for var, the
+                        variables are not initialized with a default value of undefined. A Reference Error is thrown
+                        instead</p><br>
+                    <hr>
+                    <h5 class="card-title">3. Const</h5>
+                    <p class="card-text">The const variables can only be declared once. If declared more than once, a
+                        Syntax Error will be thrown to the console.Unlike var and let, the const variable cannot be
+                        reassigned a value.Just like the let variable, const is block-scoped variable. This means that
+                        it's only accessible inside a single block, which is marked by a set of curly braces.const
+                        variables are also hoisted, but unlike for var, the variables are not initialized with a default
+                        value of undefined. A Reference Error is thrown instead.<br>
+                        <hr>It is considered a good practice to use let and const most of the time and to avoid using
+                        var.
+
+                    </p>
+                </div>
+            </div>
+            <div class="card text-bg-dark mb-3 mx-auto shadow-lg" style="max-width: 50rem;">
+                <div class="card-header text-center fs-4">Different between Arrow Function and Regular Function</div>
+                <div class="card-body">
+                    <h5 class="card-title">1.</h5>
+                    <p class="card-text">This value inside a regular function is dynamic and depends on the
+                        invocation. But this inside the arrow function is bound lexically and equals to this of the
+                        outer function.</p>
+                    <hr>
+                    <h5 class="card-title">2.</h5>
+                    <p class="card-text">arguments object inside the regular functions contains the list of arguments.
+                        The arrow function, on the opposite, doesn't define arguments (but you can easily access the
+                        arrow function arguments using a rest parameter ...args).</p>
+                    <hr>
+                    <h5 class="card-title">3.</h5>
+                    <p class="card-text">If the arrow function has one expression, then the expression is returned
+                        implicitly, even without using the return keyword.</p>
+                    <hr>
+                    <h5 class="card-title">4.</h5>
+                    <p class="card-text">you can define methods using the arrow function syntax inside classes. Fat
+                        arrow methods bind this value to the class instance.</p>
+                </div>
+            </div>
+            <div class="card text-bg-dark mb-3 mx-auto shadow-lg" style="max-width: 50rem;">
+                <div class="card-header text-center fs-4">Different between map, forEach, filter, find</div>
+                <div class="card-body">
+                    <h5 class="card-title">1. map()</h5>
+                    <p class="card-text">.map() executes the same code on every element in an array and returns a new
+                        array with the updated elements.</p>
+                    <hr>
+                    <h5 class="card-title">2. forEach()</h5>
+                    <p class="card-text">.forEach(), is used to execute the same code on every element in an array but
+                        does not change the array and it returns undefined.</p>
+                    <hr>
+                    <h5 class="card-title">3. filter()</h5>
+                    <p class="card-text">.filter() checks every element in an array to see if it meets a certain
+                        criteria and returns a new array with the elements that return truthy for the criteria.</p>
+                    <hr>
+                    <h5 class="card-title">4. find()</h5>
+                    <p class="card-text">.find(), checks the criteria and when it meets it return the first element that
+                        truly meet the criteria and return a value not an array.</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
